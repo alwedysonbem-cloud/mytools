@@ -23,4 +23,14 @@ def lista_invers(n):
         lista.append(i)
     return lista[::-1]
 
-print(lista_invers(10000))
+#lista com os n's que iremos testar os algoritmos
+casos=[10, 100, 1000, 10000]
+v=25   #numero de vezes que iremos testar cada algoritmo
+
+#agora devo fazer a parte em que testo cada um dos algoritmos de ordenação e faço a tabela para ser printada no terminal.
+
+
+#contagem do tempo de execução de cada algoritmo
+ini = time.perf_counter()
+end = time.perf_counter()
+execucao = end - ini
