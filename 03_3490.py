@@ -1,6 +1,9 @@
 import AP_03_ordenacao as ap
 import random
 import time
+import sys
+
+sys.setrecursionlimit(10**6)
 
 #função para uma lista aleatoria de 1 a n
 def lista_med(n):
@@ -24,13 +27,84 @@ def lista_invers(n):
     return lista[::-1]
 
 #lista com os n's que iremos testar os algoritmos
-casos=[10, 100, 1000, 10000]
-v=25   #numero de vezes que iremos testar cada algoritmo
+casos=[10, 50, 100, 500, 1000]
 
 #agora devo fazer a parte em que testo cada um dos algoritmos de ordenação e faço a tabela para ser printada no terminal.
 
+#laço para fazer o teste com os casos escolhidos na lista "casos"
+
+#Algoritmo "selection sort"
+tempo_medio=0
+tempo_pior=0
+
+#Algoritmo "quick sort"
+t_medio=0
+t_pior=0
+
+#Algoritmo divide and conquer sort
+T_medio=0
+T_pior=0
+
+#tabela dos resultados
+tabela={}
+
+#parte em que faço a análise com o algoritmo selection sort
+for i in casos:
+    for _ in range(50):   #testo 50 vezes o algoritmo com o caso "i", isto é, a lista com "i" itens
+        l=lista_med(i)
+        k=lista_invers(i)
+        ini = time.perf_counter()         #inicio a contagem do tempo
+        ap.selection_sort(l)
+        end = time.perf_counter()         #finalizo a contagem do tempo
+
+        a= time.perf_counter()
+        ap.quick_sort(l)
+        b= time.perf_counter()
+
+        n= time.perf_counter()
+        ap.divide_and_conquer_sort(l)
+        m= time.perf_counter()
+
+#faço o mesmo raciocínio, mas agora com a função lista_invers, para ser o pior caso
+        star= time.perf_counter()
+        ap.selection_sort(k)
+        fim= time.perf_counter()
+
+        r= time.perf_counter()
+        ap.quick_sort(k)
+        s= time.perf_counter()
+
+        x= time.perf_counter()
+        ap.divide_and_conquer_sort(k)
+        y= time.perf_counter()
+#calculo os tempos de cada caso executado pelo algoritmo
+        time_pior=fim-star
+        time_medio=end-ini
+
+#calculo os tempos medios em cada caso
+        tempo_medio+=time_medio
+        tempo_pior+=time_pior
+        t_medio+=(b-a)/50
+        t_pior+=(s-r)/50
+        T_medio+=(m-n)/50
+        T_pior+=(y-x)/50
+#calculo os tempos médio de execução do algoritmo com i itens feito 50 vezes no caso medio e pior
+    temp_med_medio=tempo_medio/50
+    temp_med_pior=tempo_pior/50
+
+
+#adiciono os resultados para esse i da lista casos no dict tabela, e, após isso, reinicio os tempos totais
+    tabela[("selection sort",i)]=[("caso médio", temp_med_medio), ("caso pior", temp_med_pior)]
+    tabela[("quick sort",i)]=[("caso médio", t_medio), ("caso pior", t_pior)]
+    tabela[("divide and conquer sort",i)]=[("caso médio", T_medio), ("caso pior", T_pior)]
+    tempo_medio=0
+    tempo_pior=0
+    continue
+
+
+
+#parte em que devo printar os resultados
+for i in tabela.values():
+    print(i)
 
 #contagem do tempo de execução de cada algoritmo
-ini = time.perf_counter()
-end = time.perf_counter()
-execucao = end - ini
