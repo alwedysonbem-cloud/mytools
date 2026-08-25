@@ -94,17 +94,34 @@ for i in casos:
 
 
 #adiciono os resultados para esse i da lista casos no dict tabela, e, após isso, reinicio os tempos totais
-    tabela[("selection sort",i)]=[("caso médio", temp_med_medio), ("caso pior", temp_med_pior)]
-    tabela[("quick sort",i)]=[("caso médio", t_medio), ("caso pior", t_pior)]
-    tabela[("divide and conquer sort",i)]=[("caso médio", T_medio), ("caso pior", T_pior)]
+    tabela[(" Selection Sort ",i)]=[["Médio", temp_med_medio], ["Pior", temp_med_pior]]
+    tabela[("   Quick Sort   ",i)]=[["Médio", t_medio], ["Pior", t_pior]]
+    tabela[("Divide & Conquer",i)]=[["Médio", T_medio], ["Pior", T_pior]]
     tempo_medio=0
     tempo_pior=0
+    t_medio=0
+    t_pior=0
+    T_medio=0
+    T_pior=0
+
     continue
 
 
-
-#parte em que devo printar os resultados
-for i in tabela.values():
-    print(i)
-
-#contagem do tempo de execução de cada algoritmo
+print("—"*69,"\n|      Algoritmo      |   Caso    |     N    |    Tempo médio (s)   |")
+for chave, valor in tabela.items():
+    if chave[1]<99:
+        casa=f"    {chave[1]}    "
+    elif chave[1]<999:
+        casa=f"    {chave[1]}   "
+    else:
+        casa=f"   {chave[1]}   "
+    print("—"*69,f"\n|  {chave[0]}   |   {valor[0][0]}   |{casa}|{valor[0][1]}") #fim do laço dos resultados dos casos medios
+for key, valo in tabela.items():
+    if key[1]<99:
+        cas=f"    {key[1]}    "
+    elif key[1]<999:
+        cas=f"    {key[1]}   "
+    else:
+        cas=f"   {key[1]}   "
+    print("—"*69,f"\n|  {key[0]}   |   {valo[1][0]}    |{cas}|{valo[1][1]}")
+print("Cada algoritmo foi rodado 50 vezes por caso e lista.")
