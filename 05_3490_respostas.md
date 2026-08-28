@@ -7,10 +7,10 @@ Na mesma ideia, note que a classe Restaurante seria a classe base de Pizzaria, e
 
 Analogamente, observe que a classe Iguaria seria classe base das suas subclasses Pizza e Bolo, já que estas devem ter nome e preço, cujos são os atributos (tipo: str) que a classe Iguaria cria.
 
-##Questão-02:
+## Questão-02:
 Dado que iguaria é um prato vendido em um restaurante, deveria ser implementado um novo atributo em Restaurante, no qual ele seria uma lista das iguarias que esse tipo de restaurante venderia. Essa ideia seria posta no "def__init__()" da classe Restaurante, da forma: "self.iguarias=[ iguaria() ]", onde a lista seria composta por elementos do tipo "iguaria".
 
 Portanto, a relação seria de atributo (Iguaria) e classe (Restaurante).
 
-##Questão-03:
+## Questão-03:
 Para o "_argumentos 1_" e o "_argumento 2_" tem-se que eles seriam do tipo "_iguaria_",com o primeirso sendo uma lista de "_iguaria_" (tendo em vista que eles seriam os pedidos de um restaurante, utilizando no código "self.iguarias", da classe Restaurante) e o segundo sendo qual "_iguaria_" o Chefe de Cozinha deverá preparar. No tocante ao "_argumento 3_", ele seria do tipo Funcionário, já que o Gerente pode apenas demitir objetos dessa classe.
