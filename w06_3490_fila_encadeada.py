@@ -48,7 +48,27 @@ class FilaEncadeada:
         if self.esta_vazio():
             return f"inicio → {None} ← fim"
         
-        frase=f""
+        frase=f"inicio -> "
+        if not self.saida.esta_vazia():   #aqui vemos se a pilha de saida já contem itens assim, ja os colocamos na string final
+            ponteiro=self.saida.top
+            while ponteiro is not None:
+                frase+=f"{ponteiro.dado} -> "
+                ponteiro=ponteiro.proximo
 
-        while not self.entrada.esta_vazia():
-            self.saida.push(self.entrada.pop())
+        itens=PilhaEncadeada()  #pilha com os itens de cima invertidos
+        while not self.entrada.esta_vazia():   #aqui adicionamos todos os itens da pilha de entrada na de saida
+            #tirar os elementos de cima e colocalos em algum lugar para depois 
+            atual=self.saida.top
+            while atual is not None:
+                itens.push(atual.dado)
+                atual=atual.proximo
+
+        ponteiro=self.saida.top
+        while ponteiro is not None:
+            frase+=f"{ponteiro.dado} -> "
+            ponteiro=ponteiro.proximo
+        
+        
+        
+        frase+=f"{None} <- fim"
+        return frase
