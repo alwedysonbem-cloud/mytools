@@ -13,15 +13,6 @@ class FilaEncadeada:
         self.entrada.push(item)
         self.tamanho+=1
     def desenfileirar(self):
-        """Remove e retorna o item da frente; levanta IndexError se a fila estiver vazia.
-        \u2014Pior caso: O(n), cenário, em que a pilha de saida (contem os itens da fila na
-        ordem de saida \u2014 os que estão no topo são os primeiros a sair, por terem sido os
-        primeiros a entrarem na pilha de entrada \u2014) está vazia. Com isso, transferimos todos os itens 
-        da pilha de entrada e após isso usamos self.saida.pop() para retornarmos e removermos o item da
-        fila encadeada
-        \u2014Armotizado: O(1), quando a pilha de saida não está vazia. Desse modo, usamos o método pop
-        da classe PilhaEncadeada para removermos o primeiro item da fila que é o que está no topo
-        da pilha de saida."""
         if self.esta_vazio():
             raise IndexError("Objeto vazio")
         elif not self.saida.esta_vazia():  #vejo se a pilha de saida nao estiver vazia
@@ -65,12 +56,7 @@ class FilaEncadeada:
         \u2014Pior caso: quando todos os itens estão na pilha de entrada;
         para essa situação temos que transferir todos os itens para a pilha de saida, e
         após isso, através de um laço colocar todos os itens da pilha de saida em uma f-string
-        para retornarmos ela
-        \u2014Melhor caso: quando todos os itens já estão na pilha de saida;
-        para esse cenário necessitamos apenas realizar o laço de colocar todos os itens na f-string
-        que irá ser retornada no fim.
-        Desse modo, veja que em todas as hipóteses a complexidade de tempo é linear, seja n+n, seja
-        apenas n, o que nos dá O(n)."""
+        para retornarmos a """
         if self.esta_vazio():
             return f"inicio → {None} ← fim"
         
