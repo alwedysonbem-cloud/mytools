@@ -1,6 +1,6 @@
 import random as rd
 
-def criar_labrinto(l, c, room=' ', wall='O', cheese='*'):
+def criar_labrinto(l, c, room='0', wall='1', cheese='*'):
     #crio a matriz com celulas de l linhas e c colunas
     labrinto=[]
     for _ in range(2*l +1):
@@ -42,7 +42,7 @@ def criar_labrinto(l, c, room=' ', wall='O', cheese='*'):
 
     return labrinto
 
-def busca_em_profundidade(labrnto, lin, col, parede="O", quejo="*"):
+def busca_em_profundidade(labrnto, lin, col, parede="W", quejo="*"):
     pila_visit=[(1, 1)] #lista com as coordenadas na ordem de percorrimento
     visitados={(1, 1)}
     queijo=()
@@ -96,7 +96,7 @@ if __name__ == '__main__':
     
 
     room = ' '
-    wall = 'O'
+    wall = 'W'
     cheese = '*'
     maze = criar_labrinto(m, n, room, wall, cheese)
 
